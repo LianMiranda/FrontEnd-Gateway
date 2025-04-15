@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -38,6 +39,11 @@ export async function createInvoiceAction(formData: FormData) {
     console.error("Erro ao criar fatura", response);
     throw new Error("Erro ao criar fatura");
   }
+
+  const data = await response.json();
+
+  revalidateTag(`accounts/${apiKey}/invoices`);
+  revalidateTag(`accounts/${apiKey}/invoices/${data.id}`);
 
   redirect(`/invoices`);
 }
