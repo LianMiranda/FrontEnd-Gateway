@@ -8,17 +8,17 @@ export default function InvoiceStatusBadge({ status }: InvoiceStatusBadgeProps) 
       case "approved":
         return {
           label: "Aprovado",
-          className: "status-approved",
+          className: "bg-green-500/10 text-green-500 px-2 py-1 rounded-full text-xs font-medium",
         }
       case "pending":
         return {
           label: "Pendente",
-          className: "status-pending",
+          className: "bg-yellow-500/10 text-yellow-500 px-2 py-1 rounded-full text-xs font-medium",
         }
       case "rejected":
         return {
           label: "Rejeitado",
-          className: "status-rejected",
+          className: "bg-red-500/10 text-red-500 px-2 py-1 rounded-full text-xs font-medium",
         }
       default:
         return {
